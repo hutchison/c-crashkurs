@@ -2,6 +2,7 @@
   aspectratio=1610,
 ]{beamer}
 
+% chktex-file 1
 % chktex-file 26
 
 \usefonttheme{professionalfonts}
@@ -11,6 +12,7 @@
 %\usecolortheme{dove}
 
 \usepackage{amsmath, amssymb}
+\usepackage{booktabs}
 
 \usepackage[MnSymbol]{mathspec}
 \defaultfontfeatures{
@@ -30,6 +32,8 @@
 \usepackage{minted}
 
 \setbeamertemplate{navigation symbols}{}
+
+\graphicspath{{./bilder/}}
 
 \newcommand{\wplogo}{\includegraphics[height=2ex]{enwiki.png}}
 
@@ -156,6 +160,8 @@
 \begin{frame}{Hello, world!}
   \inputminted{c}{hello.c}
 
+  \pause
+
   \begin{block}{Aufgabe}
     Öffne einen Texteditor (z.\,B. \texttt{gedit}), schreibe den Quelltext ab und
     speichere ihn in der Datei \texttt{hello.c}.
@@ -164,6 +170,208 @@
 
     Führe das erzeugte Programm mittels \texttt{./a.out} aus.
   \end{block}
+\end{frame}
+
+\begin{frame}{Rechnen}
+  \inputminted{c}{rechnen.c}
+
+  \begin{columns}[T]
+    \begin{column}{0.3\textwidth}
+      \begin{tabular}{lc}
+        \toprule
+        Rechenart & Operator\\
+        \midrule
+        Addition       & \texttt{+}\\
+        Subtraktion    & \texttt{-}\\
+        Multiplikation & \texttt{*}\\
+        Division       & \texttt{/}\\
+        Modulo         & \texttt{\%}\\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \pause
+
+      \begin{block}{Aufgabe}
+        Schreibe das Programm ab und überprüfe die Ausgabe.\\[1ex]
+
+        Schreibe ein Programm, das für alle Zahlen von \texttt{1} bis \texttt{6} das
+        Ergebnis der Berechnungen \texttt{6/1}, \texttt{6/2}, \ldots\ und \texttt{6\%1},
+        \texttt{6\%2}, \ldots\ ausgibt.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Variablen}
+  \begin{itemize}
+    \item wesentliches Element der Programmierung: Speichern von Daten
+    \item Daten bestehen nur aus Einsen und Nullen
+    \item Variable deklarieren = Speicherplatz reservieren
+    \item Variable besteht aus \emph{Bezeichner} und \emph{Typ} (Ganzzahl, Gleitkommazahl,
+      Buchstabe, \ldots)
+  \end{itemize}
+  \pause{}
+  \inputminted{c}{variablen1.c}
+\end{frame}
+
+\begin{frame}{Typen}
+  \begin{center}
+    \begin{tabular}{ll}
+      \toprule
+      \texttt{char} & Zeichen oder ganzzahliger Wert\\
+      \texttt{short int} & ganzzahliger Wert\\
+      \texttt{int} & ganzzahliger Wert\\
+      \texttt{long int} & ganzzahliger Wert\\
+      \texttt{long long int} & ganzzahliger Wert\\
+      \texttt{float} & Fließkommazahl (einfache Genauigkeit)\\
+      \texttt{double} & Fließkommazahl (doppelte Genauigkeit)\\
+      \texttt{long double} & Fließkommazahl (zusätzliche Genauigkeit)\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Ausgabe}
+  \begin{itemize}
+    \item \texttt{printf(} % chktex 9 chktex 36
+      \textit{Zeichenkette mit Platzhaltern}
+      \texttt{,}
+      \textit{Argumente \ldots}
+      \texttt{)}\\[2ex] % chktex 9
+
+      \begin{tabular}{ll}
+        \toprule
+        Platzhalter & Typ\\
+        \midrule
+        \texttt{\%c} & \texttt{char}\\
+        \texttt{\%i} & \texttt{int}\\
+        \texttt{\%li} & \texttt{long int}\\
+        \texttt{\%u} & \texttt{unsigned int}\\
+        \texttt{\%lu} & \texttt{unsigned long int}\\
+        \texttt{\%f} & \texttt{float}\\
+        \texttt{\%lf} & \texttt{double}\\
+        \texttt{\%Lf} & \texttt{long double}\\
+        \bottomrule
+      \end{tabular}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Eingabe}
+  \begin{itemize}
+    \item \texttt{scanf(} % chktex 9 chktex 36
+      \textit{Zeichenkette mit Platzhaltern}
+      \texttt{,}
+      \textit{(Adressen von) Argumenten \ldots}
+      \texttt{)} % chktex 9
+
+      \pause{}
+
+      \inputminted{c}{eingabe.c}
+  \end{itemize}
+
+  \pause
+
+  \begin{block}{Aufgabe}
+    Ändere das Programm so ab, dass es das nächsthöhere \emph{runde} Alter und die
+    verbleibenden Jahre dahin ausgibt. Beispiel:
+
+    \inputminted{text}{eingabe_beispiel.txt}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Werte zuweisen}
+  \begin{columns}[T]
+    \begin{column}{0.40\textwidth}
+      \inputminted{c}{zuweisung.c}
+    \end{column}
+    \begin{column}{0.60\textwidth}
+      \begin{itemize}
+        \item \texttt{=} ist in C der \textbf{Zuweisungsoperator}.
+        \item \textit{Variable} \texttt{=} \textit{Ausdruck}\texttt{;}
+        \item rechte Seite wird ausgewertet und erst dann der Variable zugewiesen
+      \end{itemize}
+
+      \pause
+
+      \begin{block}{Aufgabe}
+        Schreibe ein Programm, das vom Nutzer den Radius eines Kreises erfragt und daraus
+        den Umfang und Flächeninhalt berechnet und ausgibt. Welchen Typ muss der Radius
+        haben?
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Bedingte Ausführung}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \inputminted[tabsize=4]{c}{bedingung.c}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \pause
+
+      \begin{itemize}
+        \item \texttt{if (} % chktex 9
+          \textit{Bedingung}
+          \texttt{) \{} % chktex 9
+
+          \quad\textit{Anweisungen bei wahrer Bed.}
+
+          \texttt{\} else \{}
+
+          \quad\textit{Anweisungen bei falscher Bed.}
+
+          \texttt{\}}
+
+        \item \texttt{else}-Zweig ist optional
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Operatoren für Logik und Vergleiche}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \inputminted[tabsize=4]{c}{logische_operatoren.c}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \pause
+
+      \begin{tabular}{clcl}
+        \toprule
+        \multicolumn{2}{l}{Logik} & \multicolumn{2}{l}{Vergleiche}\\
+        \midrule
+        \texttt{\&\&} & und   & \texttt{<}  & kleiner als\\
+        \texttt{||}   & oder  & \texttt{>}  & größer als\\
+        \texttt{!}    & nicht & \texttt{<=} & kleiner gleich\\
+                      &       & \texttt{>=} & größer gleich\\
+                      &       & \texttt{==} & gleich (\emph{nicht \texttt{=}})\\
+                      &       & \texttt{!=} & ungleich\\
+      \end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Aufgabe}
+    Die (gregorianische) Schalttagsregelung besteht aus folgenden drei einzelnen Regeln:
+    \begin{enumerate}
+      \item Die durch 4 ganzzahlig teilbaren Jahre sind Schaltjahre.
+      \item Säkularjahre, also die Jahre, die ein Jahrhundert abschließen (z.\,B. 1800,
+        1900, 2100 und 2200) sind keine Schaltjahre.
+      \item Schließlich sind die durch 400 ganzzahlig teilbaren Säkularjahre doch
+        Schaltjahre. Damit sind z. B. 1600, 2000 und 2400 jeweils wieder Schaltjahre.
+    \end{enumerate}
+
+    Schreibe ein Programm, das eine Jahreszahl vom Benutzer einliest und ausgibt, ob diese
+    ein Schaltjahr ist oder nicht.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholte Ausführung}
+  % TODO: while erklären
 \end{frame}
 
 \end{document}

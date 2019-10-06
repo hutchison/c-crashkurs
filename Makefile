@@ -6,5 +6,5 @@ clean:
 slides.pdf: slides.tex
 	latexmk -pdf -xelatex -use-make -pvc -shell-escape $<
 
-hello: hello.c
+%: %.c
 	$(CC) -o $@ $<
