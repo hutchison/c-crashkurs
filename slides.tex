@@ -15,6 +15,11 @@
 \usepackage{booktabs}
 
 \usepackage[MnSymbol]{mathspec}
+\setmathfont(Digits,Latin,Greek)[
+  Numbers={Lining, Proportional}
+]{Minion Pro}
+\setmathrm{Minion Pro}
+
 \defaultfontfeatures{
   Ligatures=TeX,
   Scale=MatchLowercase,
@@ -297,8 +302,9 @@
 
       \begin{block}{Aufgabe}
         Schreibe ein Programm, das vom Nutzer den Radius eines Kreises erfragt und daraus
-        den Umfang und Flächeninhalt berechnet und ausgibt. Welchen Typ muss der Radius
-        haben?
+        den Umfang und Flächeninhalt berechnet und ausgibt.
+
+        Welchen Typ muss der Radius haben?
       \end{block}
     \end{column}
   \end{columns}
@@ -325,7 +331,7 @@
 
           \texttt{\}}
 
-        \item \texttt{else}-Zweig ist optional
+        \item \texttt{else}-Zweig ist optional, aber gerne gesehen
       \end{itemize}
     \end{column}
   \end{columns}
@@ -371,7 +377,66 @@
 \end{frame}
 
 \begin{frame}{Wiederholte Ausführung}
-  % TODO: while erklären
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \inputminted[tabsize=4]{c}{schleife.c}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \pause
+
+      \begin{itemize}
+        \item \texttt{while (} % chktex 9
+          \textit{Bedingung}
+          \texttt{) \{} % chktex 9
+
+          \quad\textit{Anweisungen bei wahrer Bed.}
+
+          \texttt{\}}
+
+        \item Solange die Bedingung wahr ist, werden die Anweisungen ausgeführt.
+
+        \item Achte auf Endlosschleifen!
+      \end{itemize}
+
+      \begin{block}{Aufgabe}
+        Wenn wir alle natürlichen Zahlen kleiner als 10 auflisten, die Vielfache von 3
+        oder 5 sind, dann erhalten wir 3, 5, 6 und 9.\medskip
+
+        Finde die Summe aller Vielfachen von 3 oder 5, die kleiner als 1000 sind.
+      \end{block}
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Aufgabe}
+    Schreibe ein Programm, das eine Zahl einliest und entscheidet, ob diese eine Primzahl
+    ist.
+  \end{block}
+
+  \begin{block}{Aufgabe}
+    \emph{Collatz-Folgen} werden mit dem folgenden Bildungsgesetz konstruiert:
+    \begin{itemize}
+      \item Beginne mit irgendeiner nat. Zahl $n>0$.
+      \item Ist $n$ gerade, dann nimm als nächstes $n / 2$;
+        ist $n$ ungerade, dann nimm als nächstes $3n + 1$.
+      \item Wiederhole die Vorgehensweise mit der erhaltenen Zahl.
+    \end{itemize}
+    Die \emph{Collatz-Vermutung} lautet:
+    \begin{quote}
+      Jede so konstruierte Zahlenfolge mündet in den Zyklus $4, 2, 1$, egal, mit welcher
+      natürlichen Zahl $n>0$ man beginnt.
+    \end{quote}
+    Schreibe ein Programm, das eine Zahl einliest und die Elemente der Collatz-Folge von
+    $n$ bis zur $1$ ausgibt.
+  \end{block}
+
+  \begin{block}{Aufgabe}
+    Schreibe ein Programm, das eine Zahl $n > 0$ einliest und ein $n \times n$ Quadrat
+    bestehend aus \texttt{\#} ausgibt. Das Innere des Quadrats soll dabei aus Leerzeichen
+    bestehen.
+  \end{block}
 \end{frame}
 
 \end{document}
